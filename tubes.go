@@ -193,7 +193,6 @@ func tambahKomponen() {
 		dataBaru.NoSeri = inputString("No Seri      : ")
 
 		if dataBaru.NoSeri == "0" {
-			tampilkanMenu()
 			return
 		}
 
@@ -218,9 +217,8 @@ func tambahKomponen() {
 	fmt.Println("\nData berhasil ditambahkan.")
 
 	fmt.Println("\nTekan ENTER untuk kembali ke menu...")
-	fmt.Scanln()
+	reader.ReadString('\n')
 
-	tampilkanMenu()
 }
 
 func noSeriSudahAda(noSeri string) bool {
@@ -244,7 +242,6 @@ func editKomponen() {
 		noSeri := inputString("Masukkan No Seri (0 untuk kembali) : ")
 
 		if noSeri == "0" {
-			tampilkanMenu()
 			return
 		}
 
@@ -264,6 +261,8 @@ func editKomponen() {
 				)
 
 				fmt.Println("\nData berhasil diperbarui.")
+				fmt.Println("\nTekan ENTER untuk kembali ke menu...")
+                reader.ReadString('\n')
 				return
 			}
 		}
@@ -282,7 +281,6 @@ func hapusKomponen() {
 		noSeri := inputString("Masukkan No Seri (0 untuk kembali) : ")
 
 		if noSeri == "0" {
-			tampilkanMenu()
 			return
 		}
 
@@ -296,6 +294,8 @@ func hapusKomponen() {
 				)
 
 				fmt.Println("\nData berhasil dihapus.")
+				fmt.Println("\nTekan ENTER untuk kembali ke menu...")
+                reader.ReadString('\n')
 				return
 			}
 		}
@@ -322,7 +322,6 @@ func cariStatus() {
 		pilihan := inputInt("Pilih Status : ")
 
 		if pilihan == 0 {
-			tampilkanMenu()
 			return
 		}
 
@@ -344,8 +343,8 @@ func cariStatus() {
 
 		sequentialSearchStatus(status)
 
-		fmt.Println("\nTekan ENTER untuk cari lagi...")
-		fmt.Scanln()
+		fmt.Println("\nTekan ENTER untuk kembali ke menu...")
+		reader.ReadString('\n')
 	}
 }
 
@@ -403,7 +402,6 @@ func cariNoSeri() {
 
 		// tombol kembali
 		if noSeri == "0" {
-			tampilkanMenu()
 			return
 		}
 
@@ -438,7 +436,7 @@ func cariNoSeri() {
 		fmt.Println("===================================================================================================")
 
 		fmt.Println("\nTekan ENTER untuk cari lagi...")
-		fmt.Scanln()
+		reader.ReadString('\n')
 	}
 }
 
@@ -551,6 +549,4 @@ func tampilkanStatistik() {
 	fmt.Println("====================================================")
 
 }
-
-
 
