@@ -63,11 +63,9 @@ func main() {
 		
 		case 7:
 			selectionSort()
-			fmt.Println("\nData berhasil diurutkan berdasarkan No Seri (Asc).")
 		
 		case 8:
 			insertionSort()
-			fmt.Println("\nData berhasil diurutkan berdasarkan No Seri (Asc).")
 		
 		case 9:
 			tampilkanStatistik()
@@ -84,19 +82,24 @@ func main() {
 
 func tampilkanMenu() {
 
-	fmt.Println("\n===== SEHATIN PC =====")
-	fmt.Println("1. Lihat Komponen")
-	fmt.Println("2. Tambah Komponen")
-	fmt.Println("3. Edit Komponen")
-	fmt.Println("4. Hapus Komponen")
-	fmt.Println("5. Cari Status (Sequential Search)")
-	fmt.Println("6. Cari No Seri (Binary Search)")
-	fmt.Println("7. Urutkan No Seri Asc (Selection Sort)")
-	fmt.Println("8. Urutkan No Seri Asc (Insertion Sort)")
-	fmt.Println("9. Statistik Komponen")
+	fmt.Println("\n====================================================")
+	fmt.Println("                  SEHATIN PC")
+	fmt.Println("     Monitoring Kondisi Komponen Komputer")
+	fmt.Println("====================================================")
+	fmt.Println(" 1. Lihat Komponen")
+	fmt.Println(" 2. Tambah Komponen")
+	fmt.Println(" 3. Edit Komponen")
+	fmt.Println(" 4. Hapus Komponen")
+	fmt.Println(" 5. Cari Status (Sequential Search)")
+	fmt.Println(" 6. Cari No Seri (Binary Search)")
+	fmt.Println(" 7. Urutkan No Seri Asc (Selection Sort)")
+	fmt.Println(" 8. Urutkan No Seri Desc (Insertion Sort)")
+	fmt.Println(" 9. Statistik Komponen")
 	fmt.Println("10. Keluar")
-	fmt.Println("======================")
+	fmt.Println("====================================================")
+
 }
+
 
 func inputString(pesan string) string {
 
@@ -145,17 +148,23 @@ func hitungStatus(suhu int, beban int) string {
 
 func tampilkanKomponen() {
 
-	fmt.Println("\n===== DATA KOMPONEN =====")
+	fmt.Println("\n===================================================================================================")
+	fmt.Println("                                        DATA KOMPONEN")
+	fmt.Println("===================================================================================================")
 
 	if len(dataKomponen) == 0 {
 		fmt.Println("Belum ada data.")
 		return
 	}
 
+	fmt.Printf("| %-3s | %-10s | %-25s | %-8s | %-12s | %-18s |\n",
+		"No", "No Seri", "Nama", "Suhu", "Beban", "Status")
+
+	fmt.Println("---------------------------------------------------------------------------------------------------")
+
 	for i := 0; i < len(dataKomponen); i++ {
 
-		fmt.Printf(
-			"\n%d\nNo Seri      : %s\nNama         : %s\nSuhu         : %d°C\nBeban Kerja  : %d%%\nStatus       : %s\n",
+		fmt.Printf("| %-3d | %-10s | %-25s | %-6d°C | %-10d%% | %-18s |\n",
 			i+1,
 			dataKomponen[i].NoSeri,
 			dataKomponen[i].Nama,
@@ -164,13 +173,19 @@ func tampilkanKomponen() {
 			dataKomponen[i].Status,
 		)
 	}
+
+	fmt.Println("===================================================================================================")
+
 }
+
 
 func tambahKomponen() {
 
 	var dataBaru Komponen
 
-	fmt.Println("\n===== TAMBAH KOMPONEN =====")
+	fmt.Println("\n====================================================")
+	fmt.Println("               TAMBAH KOMPONEN")
+	fmt.Println("====================================================")
 
 	for {
 		dataBaru.NoSeri = inputString("No Seri      : ")
@@ -209,7 +224,9 @@ func noSeriSudahAda(noSeri string) bool {
 
 func editKomponen() {
 
-	fmt.Println("\n===== EDIT KOMPONEN =====")
+	fmt.Println("\n====================================================")
+	fmt.Println("                EDIT KOMPONEN")
+	fmt.Println("====================================================")
 
 	noSeri := inputString("Masukkan No Seri : ")
 
@@ -238,7 +255,9 @@ func editKomponen() {
 
 func hapusKomponen() {
 
-	fmt.Println("\n===== HAPUS KOMPONEN =====")
+	fmt.Println("\n====================================================")
+	fmt.Println("                HAPUS KOMPONEN")
+	fmt.Println("====================================================")
 
 	noSeri := inputString("Masukkan No Seri : ")
 
@@ -262,11 +281,14 @@ func hapusKomponen() {
 //Sequential
 func cariStatus() {
 
-	fmt.Println("\n===== CARI STATUS =====")
+	fmt.Println("\n====================================================")
+	fmt.Println("                 CARI STATUS")
+	fmt.Println("====================================================")
 	fmt.Println("1. Normal")
 	fmt.Println("2. Lag")
 	fmt.Println("3. Overheat")
 	fmt.Println("4. Lag & Overheat")
+	fmt.Println("====================================================")
 
 	pilihan := inputInt("Pilih Status : ")
 
@@ -287,18 +309,28 @@ func cariStatus() {
 	}
 
 	sequentialSearchStatus(status)
+
 }
+
 
 func sequentialSearchStatus(status string) {
 
 	ditemukan := false
 
+	fmt.Println("\n===================================================================================================")
+	fmt.Printf("Hasil Pencarian Status : %s\n", status)
+	fmt.Println("===================================================================================================")
+
+	fmt.Printf("| %-10s | %-25s | %-8s | %-12s | %-18s |\n",
+		"No Seri", "Nama", "Suhu", "Beban", "Status")
+
+	fmt.Println("---------------------------------------------------------------------------------------------------")
+
 	for i := 0; i < len(dataKomponen); i++ {
 
 		if dataKomponen[i].Status == status {
 
-			fmt.Printf(
-				"\nNo Seri      : %s\nNama         : %s\nSuhu         : %d°C\nBeban Kerja  : %d%%\nStatus       : %s\n",
+			fmt.Printf("| %-10s | %-25s | %-6d°C | %-10d%% | %-18s |\n",
 				dataKomponen[i].NoSeri,
 				dataKomponen[i].Nama,
 				dataKomponen[i].Suhu,
@@ -311,14 +343,20 @@ func sequentialSearchStatus(status string) {
 	}
 
 	if !ditemukan {
-		fmt.Println("\nData tidak ditemukan.")
+		fmt.Println("Data tidak ditemukan.")
 	}
+
+	fmt.Println("===================================================================================================")
+
 }
+
 
 //Binary
 func cariNoSeri() {
 
-	fmt.Println("\n===== BINARY SEARCH =====")
+	fmt.Println("\n====================================================")
+	fmt.Println("              BINARY SEARCH NO SERI")
+	fmt.Println("====================================================")
 
 	noSeri := inputString("Masukkan No Seri : ")
 
@@ -332,17 +370,27 @@ func cariNoSeri() {
 		return
 	}
 
-	fmt.Println("\nData ditemukan")
+	fmt.Println("\n===================================================================================================")
+	fmt.Println("                                         DATA DITEMUKAN")
+	fmt.Println("===================================================================================================")
 
-	fmt.Printf(
-		"No Seri      : %s\nNama         : %s\nSuhu         : %d°C\nBeban Kerja  : %d%%\nStatus       : %s\n",
+	fmt.Printf("| %-10s | %-25s | %-8s | %-12s | %-18s |\n",
+		"No Seri", "Nama", "Suhu", "Beban", "Status")
+
+	fmt.Println("---------------------------------------------------------------------------------------------------")
+
+	fmt.Printf("| %-10s | %-25s | %-6d°C | %-10d%% | %-18s |\n",
 		dataKomponen[index].NoSeri,
 		dataKomponen[index].Nama,
 		dataKomponen[index].Suhu,
 		dataKomponen[index].BebanKerja,
 		dataKomponen[index].Status,
 	)
+
+	fmt.Println("===================================================================================================")
+
 }
+
 
 func binarySearchNoSeri(noSeri string) int {
 
@@ -385,8 +433,12 @@ func selectionSort() {
 			}
 		}
 
-		dataKomponen[i], dataKomponen[indexTerkecil] = dataKomponen[indexTerkecil], dataKomponen[i]
+		dataKomponen[i], dataKomponen[indexTerkecil] =
+			dataKomponen[indexTerkecil], dataKomponen[i]
 	}
+
+	fmt.Println("\nData berhasil diurutkan (Ascending).")
+	tampilkanKomponen()
 }
 
 //Insertion
@@ -398,7 +450,7 @@ func insertionSort() {
 
 		j := i - 1
 
-		for j >= 0 && dataKomponen[j].NoSeri > key.NoSeri {
+		for j >= 0 && dataKomponen[j].NoSeri < key.NoSeri {
 
 			dataKomponen[j+1] = dataKomponen[j]
 
@@ -407,12 +459,17 @@ func insertionSort() {
 
 		dataKomponen[j+1] = key
 	}
+
+	fmt.Println("\nData berhasil diurutkan (Descending).")
+	tampilkanKomponen()
 }
 
 //Statistik
 func tampilkanStatistik() {
 
-	fmt.Println("\n+++ SEHATIN PC +++")
+	fmt.Println("\n====================================================")
+	fmt.Println("                STATISTIK KOMPONEN")
+	fmt.Println("====================================================")
 
 	if len(dataKomponen) == 0 {
 		fmt.Println("Belum ada data komponen.")
@@ -428,21 +485,19 @@ func tampilkanStatistik() {
 		totalSuhu += dataKomponen[i].Suhu
 
 		if dataKomponen[i].Status == "Normal" {
-
 			jumlahNormal++
-
 		} else {
-
 			jumlahBermasalah++
 		}
 	}
 
 	rataRataSuhu := float64(totalSuhu) / float64(len(dataKomponen))
 
-	fmt.Printf("\nJumlah Komponen      : %d\n", len(dataKomponen))
+	fmt.Printf("Jumlah Komponen      : %d\n", len(dataKomponen))
 	fmt.Printf("Komponen Normal      : %d\n", jumlahNormal)
 	fmt.Printf("Komponen Bermasalah  : %d\n", jumlahBermasalah)
 	fmt.Printf("Rata-rata Suhu       : %.2f °C\n", rataRataSuhu)
 
-	fmt.Println("\n++++++++++++++++++++")
+	fmt.Println("====================================================")
+
 }
