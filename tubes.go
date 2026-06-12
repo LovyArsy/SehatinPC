@@ -178,7 +178,6 @@ func tampilkanKomponen() {
 
 }
 
-
 func tambahKomponen() {
 
 	var dataBaru Komponen
@@ -187,8 +186,16 @@ func tambahKomponen() {
 	fmt.Println("               TAMBAH KOMPONEN")
 	fmt.Println("====================================================")
 
+	// tombol kembali
+	fmt.Println("Masukkan No Seri (0 untuk kembali)")
+
 	for {
 		dataBaru.NoSeri = inputString("No Seri      : ")
+
+		if dataBaru.NoSeri == "0" {
+			tampilkanMenu()
+			return
+		}
 
 		if !noSeriSudahAda(dataBaru.NoSeri) {
 			break
@@ -209,6 +216,11 @@ func tambahKomponen() {
 	dataKomponen = append(dataKomponen, dataBaru)
 
 	fmt.Println("\nData berhasil ditambahkan.")
+
+	fmt.Println("\nTekan ENTER untuk kembali ke menu...")
+	fmt.Scanln()
+
+	tampilkanMenu()
 }
 
 func noSeriSudahAda(noSeri string) bool {
