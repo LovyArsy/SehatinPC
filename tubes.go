@@ -63,6 +63,7 @@ func main() {
 		
 		case 7:
 			selectionSort()
+			fmt.Println("\nData berhasil diurutkan (Ascending).")
 		
 		case 8:
 			insertionSort()
@@ -485,7 +486,6 @@ func selectionSort() {
 			dataKomponen[indexTerkecil], dataKomponen[i]
 	}
 
-	fmt.Println("\nData berhasil diurutkan (Ascending).")
 	tampilkanKomponen()
 }
 
